@@ -1,0 +1,129 @@
+header {
+	&.navbar {
+		border-radius: 0;
+	}
+	position: relative;
+	.navbar-nav {
+		background: $darkerGray;
+		@include breakpoint(phone){
+			margin: 0;
+			width: 100%;
+		}
+		float: right;
+		& > li {
+			position: relative;
+			a {
+				color: $gray;
+			}
+			@include breakpoint(phone){
+				border-bottom: 1px solid $darkGray;
+			}
+			ul {
+				display: none;
+				min-width: 10em;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				background: $darkerGray;
+				li {
+					@include box-sizing(border-box);
+					white-space: nowrap;
+					display: block;
+					border-bottom: 1px solid $darkGray;
+					border-top: 1px solid $lightGray;
+					a {
+						display: block;
+						padding: .3725em .5em;
+						line-height: 1.1;
+						&:hover {
+							background: #000;
+							color: #fff;
+							text-decoration: none;
+						}
+					}
+					&:first-child {
+						border-top: none;
+					}
+					ul {
+						position: relative;
+						top: 0;
+						background: lighten($darkerGray, 10%);
+						li {
+							&:first-child {
+								border-top: none;
+							}
+							a {
+								padding-left: 0.875em;
+							}
+							li {
+								border: none;
+								a {
+									padding-left: 1.5em;
+								}
+							}
+						}
+					}
+				}
+			}
+			&:last-child {
+				ul {
+					left: auto;
+					right: 0;
+				}
+			}
+			&:hover {
+				ul {
+					display: block;
+					@include breakpoint(phone){
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	.search-field {
+		background-color: transparent;
+		background-image: image_url('search-icon.png');
+		background-position: 5px center;
+		background-repeat: no-repeat;
+		background-size: 16px 16px;
+		border: none;
+		cursor: pointer;
+		height: 37px;
+		margin: 3px 0;
+		padding: 0 0 0 34px;
+		position: relative;
+		-webkit-transition: width 400ms ease, background 400ms ease;
+		transition:         width 400ms ease, background 400ms ease;
+		width: 0;
+	}
+
+	.search-field:focus {
+		background-color: #fff;
+		border: 2px solid $gray;
+		cursor: text;
+		outline: 0;
+		width: 230px;
+	}
+	.search-submit {
+		display: none;
+	}
+}
+.search-form {
+	position: absolute;
+	right: 20px;
+	top: 4px;
+	z-index: 40;
+	@include breakpoint(tablet) {
+		right: -30px;
+		top: 8px;
+	}
+	@include breakpoint(phone) {
+		right: 60px;
+		top: 4px;
+	}
+}
+

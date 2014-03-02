@@ -1,0 +1,17 @@
+//
+// Mixins
+// --------------------------------------------------
+@mixin breakpoint($point) {
+  @if $point == large {
+		@media (min-width: 75em) { @content; }
+	}
+	@else if $point == desktop {
+    @media (min-width: 61.25em) { @content; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 48em) and (max-width: 61.1875em) { @content; }
+  }
+  @else if $point == phone {
+    @media (max-width: 47.9375em)  { @content; }
+  }
+}

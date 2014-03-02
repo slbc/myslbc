@@ -1,0 +1,15 @@
+{
+    "name": "myslbc",
+    "description": "Scott Lake",
+    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:voceconnect/myslbc.git"
+    },
+    "bugs": {
+        "url": "https://github.com/voceconnect/myslbc/issues"
+    },
+    "devDependencies": {
+        "grunt-voce-plugins": "latest"
+    }
+}

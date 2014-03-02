@@ -1,0 +1,35 @@
+# system files
+.htaccess
+.htpasswd
+/config
+.DS_Store
+Thumbs.db
+/nbproject/private/
+
+# npm files
+/node_modules
+
+# generated files
+sitemap.xml*
+.sass-cache
+
+# composer controlled files
+/wp-content/plugins
+/wp-content/drop-ins
+/wp-content/mu-plugins
+
+# wpms and wordpress files
+/wp
+/wp-config.php
+/wp-content/uploads/*
+/wp-content/cache/*
+#Theme Ignored Files
+wp-content/themes/scott-lake/.DS_Store
+wp-content/themes/scott-lake/node_modules
+wp-content/themes/scott-lake/.sass-cache
+wp-content/themes/scott-lake/vendor/
+wp-content/themes/scott-lake/js/main.min.js
+wp-content/themes/scott-lake/js/libs/bootstrap.js
+wp-content/themes/scott-lake/js/libs/bootstrap.min.js
+wp-content/themes/scott-lake/editor-styles.css
+wp-content/themes/scott-lake/style.css
