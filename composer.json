@@ -18,6 +18,13 @@
     },
     "require": {
         "voceconnect/wordpress": "~3.8.0",
+        "voceconnect/voce-settings-api": "~0.4",
+        "voceconnect/post-selection-ui": "~1.0",
+        "voceconnect/voce-post-meta": "~1.4",
+        "voceconnect/voce-post-meta-media": "~1.1",
+        "voceconnect/voce-post-meta-psu": "~1.0",
+        "wpackagist/crop-thumbnails": "~0.8",
+        "wpackagist/voce-seo": "~0.2",
         "wpackagist/memcached": "2.0.2"
     },
     "require-dev": {

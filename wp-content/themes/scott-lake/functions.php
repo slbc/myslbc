@@ -44,7 +44,8 @@ if ( !function_exists( 'scott_lake_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'primary' => __( 'Primary Menu', 'scott_lake' ),
+			'primary' => __( 'Primary Top Menu', 'scott_lake' ),
+			'secondary' => __( 'Secondary Top Menu', 'scott_lake' ),
 		) );
 
 		// Enable support for Post Formats.
@@ -56,9 +57,13 @@ if ( !function_exists( 'scott_lake_setup' ) ) :
 			'default-image' => '',
 		) ) );
 
+		add_image_size( 'carousel-slide', 2000, 916, true );
+
 		// setup base actions
 		add_action( 'widgets_init', 'scott_lake_widgets_init' );
 		add_action( 'wp_enqueue_scripts', 'scott_lake_scripts' );
+
+		require_once __DIR__ . '/plugins/voce-carousel/voce-carousel.php';
 	}
 
 endif; // scott_lake_setup
@@ -93,35 +98,10 @@ function scott_lake_scripts() {
 	wp_enqueue_script( 'modernizr', $template_dir . '/js/libs/modernizr.min.js', false, '2.7.1', false );
 
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		wp_enqueue_script( 'bootstrap', $template_dir . '/js/libs/bootstrap.min.js', array( 'jquery' ), '3.0.0', true );
+		wp_enqueue_script( 'bootstrap', $template_dir . '/js/libs/bootstrap.js', array( 'jquery' ), '3.0.0', true );
 		wp_enqueue_script( 'scott_lake', $template_dir . '/js/main.js', array( 'jquery', 'bootstrap', 'modernizr' ), '0.1.0', true );
 	} else {
 		wp_enqueue_script( 'bootstrap', $template_dir . '/js/libs/bootstrap.min.js', array( 'jquery' ), '3.0.0', true );
 		wp_enqueue_script( 'scott_lake', $template_dir . '/js/main.min.js', array( 'jquery', 'bootstrap', 'modernizr' ), '0.1.0', true );
 	}
 }
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/inc/jetpack.php';

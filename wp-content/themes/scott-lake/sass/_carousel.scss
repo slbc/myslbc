@@ -1,0 +1,157 @@
+.carousel {
+	.item {
+		background-repeat: no-repeat;
+		background-position: center top;
+		@include background-size(cover);
+		height: 680px;
+		.container {
+			position: relative;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		@include breakpoint(phone) {
+			max-width: 100%;
+			height: auto;
+			.container {
+				padding-bottom: 10px;
+			}
+		}
+	}
+}
+
+.carousel-caption {
+	width: 458px;
+	@include box-sizing(border-box);
+	position: absolute;
+	padding: 50px 30px;
+	left: 0;
+	right: auto;
+	top: 175px;
+	bottom: auto;
+	background: rgba(#fff,.7);
+	text-align: left;
+	color: #000;
+	h1 {
+		font-size: 6.9rem;
+		margin-top: 20px;
+		@include bodyFontBold();
+		text-shadow: none;
+		line-height: 0.8771929825;
+		@include breakpoint(phone){
+			font-size: 3rem;
+		}
+	}
+	h2 {
+		@extend h1;
+		font-size: 5rem;
+		margin-top: 0;
+		word-break: break-word;
+	}
+	h3 {
+		text-shadow: none;
+		margin: 5px 0 0 0;
+		@include breakpoint(phone) {
+			font-size: 2rem;
+		}
+	}
+	h4 {
+		font-size: 2.2rem;
+		margin-top: 28px;
+		@include bodyFontMed();
+		text-shadow: none;
+		@include breakpoint(phone){
+			font-size: 1.8rem;
+			margin-top: 16px;
+		}
+	}
+	h5 {
+		@include bodyFontMed();
+		color: $orange;
+		text-shadow: none;
+	}
+	p {
+		padding-top: 10px;
+		margin-bottom: 0;
+		font-size: 1.8rem;
+		line-height: 1.3513513514;
+		text-shadow: none;
+		@include bodyFontLight();
+		span, a {
+			color: $orange;
+			&.btn {
+				color: #fff;
+				padding: 13px 18px 12px 18px;
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+		i {
+			margin-right: 4px;
+		}
+	}
+	@include breakpoint(phone) {
+		width: 100%;
+		position: relative;
+		padding: 25px 10px;
+		margin-top: 0;
+		margin-bottom: 25px;
+		top: 18px;
+		left: 0;
+		h2 {
+			word-break: break-word;
+			font-size: 3.2rem;
+			@include breakpoint(phone) {
+				font-size: 2.2rem;
+			}
+		}
+		p {
+			font-size: 1.4rem;
+			&.text-center {
+				text-align: left;
+			}
+		}
+	}
+}
+.carousel-indicators {
+	left: auto;
+	right: 0;
+	li {
+		border: 3px solid #fff;
+		height: 12px;
+		width: 12px;
+		@include transition(all, .25s);
+		&.active {
+			border: 3px solid $orange;
+			background: $orange;
+			margin: 1px;
+		}
+	}
+	@include breakpoint(phone) {
+		width: auto;
+		right: 10px;
+		bottom: auto;
+		top: 24px;
+		li {
+			display: block;
+			margin-bottom: 6px;
+			&.active {
+				margin-bottom: 6px;
+			}
+		}
+	}
+}
+.btn-carousel {
+	background: $orange;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	border-radius: 0;
+	margin: 0 auto;
+	border: 1px solid $orange;
+	@include transition(all, .25s);
+	&:hover {
+		background: #fff;
+		color: $orange;
+	}
+}
