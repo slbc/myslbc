@@ -4,6 +4,8 @@ html #wpadminbar {
 	}
 }
 header {
+	height: $navBarHeight;
+
 	.logged-in & {
 		top: 32px;
 		@include breakpoint(tablet) {
@@ -38,7 +40,7 @@ header {
 	}
 
 	.navbar-inner {
-		height: 105px;
+		height: $navBarHeight;
 		background: #fff;
 		background: rgba(255,255,255,.9);
 		@include box-sizing(border-box);
@@ -50,12 +52,12 @@ header {
 		.navbar-brand {
 			background: image-url('logo.png') no-repeat;
 			@include image-2x('logo2x.png', 100%, 100%);
-			height: 46px;
-			width: 131px;
+			height: 80px;
+			width: 295px;
 			text-indent: -9999px;
 			padding: 5px;
 			left: 14px;
-			top: 28px;
+			top: 14px;
 			position: absolute;
 			@include breakpoint(phone) {
 				top: 19px;
@@ -201,7 +203,7 @@ header {
 			}
 		}
 		&+div.teaser {
-			margin-top: 105px;
+			margin-top: $navBarHeight;
 		}
 	}
 }

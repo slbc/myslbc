@@ -6,10 +6,10 @@ class Voce_Carousel {
 	const MAX_CAROUSEL_ITEMS = 5; //may change to setting later
 
 	public static function init() {
-		if ( !class_exists('Voce_Settings_API') )
+		if ( !class_exists( 'Voce_Settings_API' ) )
 			return _doing_it_wrong( __CLASS__, 'Voce Settings API is required for the this plugin to work', null );
 
-		if ( !class_exists('Post_Selection_Box') )
+		if ( !class_exists( 'Post_Selection_Box' ) )
 			return _doing_it_wrong( __CLASS__, 'Post Selection UI is required for the this plugin to work', null );
 
 		self::register_post_type();
@@ -45,7 +45,7 @@ class Voce_Carousel {
 				'menu_name' => __( 'Carousel Items', 'manifest' )
 			),
 			'query_var' => false,
-			'publicly_queryable'  => false,
+			'publicly_queryable' => false,
 			'exclude_from_search' => true,
 			'hierarchical' => false,
 			'public' => false,
@@ -62,44 +62,44 @@ class Voce_Carousel {
 		add_metadata_group( $carousel_items, 'Carousel Items' );
 		add_metadata_field( $carousel_items, 'carousel_item_ids', '', 'psu', array(
 			'post_type' => self::POST_TYPE,
-			'limit'     => 10
+			'limit' => 10
 		) );
 		add_post_type_support( 'page', $carousel_items );
 	}
 
-	public static function carousel_preview_button($return, $id, $new_title, $slug){
-		$post = get_post($id);
+	public static function carousel_preview_button( $return, $id, $new_title, $slug ) {
+		$post = get_post( $id );
 
-		if($post->post_type != 'carousel')
+		if ( $post->post_type != 'carousel' )
 			return $return;
 
 		$permalink = home_url();
 		$return = '';
 		if ( 'publish' == $post->post_status ) {
-			$view_post = get_post_type_object($post->post_type)->labels->view_item;
+			$view_post = get_post_type_object( $post->post_type )->labels->view_item;
 			$return .= "<span id='view-post-btn'><a href='$permalink' class='button' target='_blank'>$view_post on Homepage</a></span>\n";
 		}
 		return $return;
 	}
 
-	public static function psu_row_add_image($title, $post_id, $name, $args){
-		if( $name == 'carousel_items[carousel_item_ids]' && has_post_thumbnail($post_id) ){
-			$image_id = get_post_thumbnail_id($post_id);
-			$src = wp_get_attachment_image_src($image_id, 'thumb-108');
-			return sprintf('<p><a href="%s" target="_blank"><img src="%s" /></a>  %s</p>', get_edit_post_link($image_id, false), $src[0], $title);
+	public static function psu_row_add_image( $title, $post_id, $name, $args ) {
+		if ( $name == 'carousel_items[carousel_item_ids]' && has_post_thumbnail( $post_id ) ) {
+			$image_id = get_post_thumbnail_id( $post_id );
+			$src = wp_get_attachment_image_src( $image_id, 'thumb-108' );
+			return sprintf( '<p><a href="%s" target="_blank"><img src="%s" /></a>  %s</p>', get_edit_post_link( $image_id, false ), $src[0], $title );
 		}
 		return $title;
 	}
 
-	public static function save_post($post_id) {
+	public static function save_post( $post_id ) {
 		//clickthru url meta saving
 		if ( wp_is_post_autosave( $post_id ) || wp_is_post_revision( $post_id ) )
 			return $post_id;
 
-		if( get_option( 'page_on_front' ) === $post_id )
+		if ( get_option( 'page_on_front' ) === $post_id )
 			wp_cache_delete( 'carousel_query' );
 
-		if( get_post_type( $post_id ) != self::POST_TYPE )
+		if ( get_post_type( $post_id ) != self::POST_TYPE )
 			return $post_id;
 
 		if ( isset( $_REQUEST['carousel_data_nonce'] ) && wp_verify_nonce( $_REQUEST['carousel_data_nonce'], 'update_carousel_data' ) ) {
@@ -118,14 +118,14 @@ class Voce_Carousel {
 	}
 
 	//if post or story has carousel item created from it while in draft status, update the permalink after the item is published.
-	public static function update_carousel_item_permalink($new_status, $old_status, $post){
-		if($new_status == 'publish'){
-			$carousel_item_id = get_post_meta($post->ID, 'carousel_item_created', true);
-			if($carousel_item_id){
-				if($carousel_item = get_post($carousel_item_id)){
-					$clickthru_url = get_post_meta($carousel_item_id, 'clickthru_url', true);
-					if($clickthru_url == $carousel_item->guid){
-						update_post_meta($carousel_item_id, 'clickthru_url', get_permalink($post->ID));
+	public static function update_carousel_item_permalink( $new_status, $old_status, $post ) {
+		if ( $new_status == 'publish' ) {
+			$carousel_item_id = get_post_meta( $post->ID, 'carousel_item_created', true );
+			if ( $carousel_item_id ) {
+				if ( $carousel_item = get_post( $carousel_item_id ) ) {
+					$clickthru_url = get_post_meta( $carousel_item_id, 'clickthru_url', true );
+					if ( $clickthru_url == $carousel_item->guid ) {
+						update_post_meta( $carousel_item_id, 'clickthru_url', get_permalink( $post->ID ) );
 					}
 				}
 			}
@@ -133,8 +133,8 @@ class Voce_Carousel {
 	}
 
 	//metabox display handling
-	public static function add_carousel_meta_boxes($post_type, $post) {
-		if( get_option('page_on_front') != $post->ID ){
+	public static function add_carousel_meta_boxes( $post_type, $post ) {
+		if ( get_option( 'page_on_front' ) != $post->ID ) {
 			remove_meta_box( 'carousel_items', 'page', 'normal' );
 		}
 		if ( $post_type == self::POST_TYPE ) {
@@ -142,22 +142,21 @@ class Voce_Carousel {
 			add_meta_box( 'carousel_data', 'Item Settings', array( __CLASS__, 'clickthru_url_metabox' ), $post_type );
 
 			//add metabox to quickly add to selected list
-			if($post->post_status == 'publish'){
+			if ( $post->post_status == 'publish' ) {
 				if ( current_user_can( 'manage_options' ) ) {
 					wp_enqueue_script( 'manage-carousel' );
 					add_meta_box( 'add_to_carousel', 'Add to Carousel', array( __CLASS__, 'add_to_carousel_metabox' ), null, 'side', 'low' );
 				}
 			}
-
 		} elseif ( post_type_supports( $post_type, 'create_carousel_item' ) ) {
-			add_meta_box('create_carousel_item', 'Create Carousel Item', array(__CLASS__, 'create_carousel_item_metabox'), null, 'side');
+			add_meta_box( 'create_carousel_item', 'Create Carousel Item', array( __CLASS__, 'create_carousel_item_metabox' ), null, 'side' );
 		}
 	}
 
 	public static function clickthru_url_metabox( $post ) {
-		wp_enqueue_script('edit-carousel');
-		$clickthru_url  = get_post_meta( $post->ID, 'clickthru_url', true ) ?: 'http://';
-		$clickthru_text = get_post_meta( $post->ID, 'clickthru_text', true ) ?: 'Read More';
+		wp_enqueue_script( 'edit-carousel' );
+		$clickthru_url = get_post_meta( $post->ID, 'clickthru_url', true ) ? : 'http://';
+		$clickthru_text = get_post_meta( $post->ID, 'clickthru_text', true ) ? : 'Read More';
 		?>
 		<table class="form-table">
 			<tbody>
@@ -183,14 +182,14 @@ class Voce_Carousel {
 								<input type="text" id="clickthru_url" class="widefat" name="clickthru_url" value="<?php echo esc_attr( $clickthru_url ) ?>" class="widefat"/>
 								<p class="description">Or link to existing content</p>
 								<?php
-								echo post_selection_ui('clickthru_url_search', array(
-									'post_type'   => apply_filters( 'voce_carousel_clickthru_post_types', array( 'post', 'page' ) ),
-									'post_status' => array('publish'),
-									'limit'       => 0,
-									'selected'    => array(),
-									'labels'      => array('name' => 'URL Target', 'singular_name' => 'URL Target'),
-									'sortable'    => false,
-									));
+								echo post_selection_ui( 'clickthru_url_search', array(
+									'post_type' => apply_filters( 'voce_carousel_clickthru_post_types', array( 'post', 'page' ) ),
+									'post_status' => array( 'publish' ),
+									'limit' => 0,
+									'selected' => array( ),
+									'labels' => array( 'name' => 'URL Target', 'singular_name' => 'URL Target' ),
+									'sortable' => false,
+								) );
 								?>
 							</div>
 						</fieldset>
@@ -207,10 +206,20 @@ class Voce_Carousel {
 	}
 
 	public static function get_carousel_ids() {
-		return array_map( 'intval', get_post_meta(get_option('page_on_front'), 'carousel_item_ids', get_option( 'page_on_front' ) ) );
+		$front_page = get_option( 'page_on_front' );
+		if ( !$front_page ) {
+			return array( );
+		}
+
+		$item_ids = get_post_meta( $front_page, 'carousel_item_ids', true );
+		if ( !is_array( $item_ids ) ) {
+			return array( );
+		}
+
+		return array_map( 'intval', $item_ids );
 	}
 
-	public static function get_carousel_query( $query_args = array() ){
+	public static function get_carousel_query( $query_args = array( ) ) {
 		$defaults = array(
 			'post_type' => self::POST_TYPE,
 			'posts_per_page' => self::MAX_CAROUSEL_ITEMS,
@@ -224,10 +233,10 @@ class Voce_Carousel {
 
 		$query = wp_cache_get( 'carousel_query' );
 
-		if( $query === false ){
+		if ( $query === false ) {
 			$query = new WP_Query( $query_args );
 
-			if( is_wp_error( $query ) )
+			if ( is_wp_error( $query ) )
 				return false;
 
 			wp_cache_set( 'carousel_query', $query );
@@ -241,6 +250,7 @@ class Voce_Carousel {
 		$carousel_ids = array_map( 'intval', $carousel_ids );
 
 		update_post_meta( get_option( 'page_on_front' ), "carousel_item_ids", $carousel_ids );
+		wp_cache_delete('carousel_query');
 	}
 
 	private static function get_add_to_carousel_link( $post_id ) {
@@ -250,7 +260,7 @@ class Voce_Carousel {
 
 		$html = '';
 		if ( false !== $current_position ) {
-			$html .= sprintf( '<p>Current Carousel Position: %1$d of %2$d</p>', $current_position + 1, count($carousel_ids) );
+			$html .= sprintf( '<p>Current Carousel Position: %1$d of %2$d</p>', $current_position + 1, count( $carousel_ids ) );
 		}
 
 		if ( 0 !== $current_position ) {
@@ -287,48 +297,49 @@ class Voce_Carousel {
 		die( json_encode( $response ) );
 	}
 
-	public static function ajax_quick_create_carousel_item(){
-		check_ajax_referer('quick_create_carousel_item');
+	public static function ajax_quick_create_carousel_item() {
+		check_ajax_referer( 'quick_create_carousel_item' );
 
-		if(!isset($_REQUEST['post_id']))
-			wp_die(-1);
+		if ( !isset( $_REQUEST['post_id'] ) )
+			wp_die( -1 );
 
-		$post_id = (int) $_REQUEST['post_id'];
+		$post_id = ( int ) $_REQUEST['post_id'];
 		$original_post = get_post( $post_id, ARRAY_A );
 		$post = array(
-			'post_type'   => self::POST_TYPE,
+			'post_type' => self::POST_TYPE,
 			'post_status' => 'publish',
-			'post_title'  => $original_post['post_title'],
+			'post_title' => $original_post['post_title'],
 		);
 
-		if( $new_id = wp_insert_post( $post ) ){
+		if ( $new_id = wp_insert_post( $post ) ) {
 			//set original post as having already created a carousel item from so the link to create carousel item doesn't display anymore
 			update_post_meta( $post_id, 'carousel_item_created', $new_id );
 			$thumb_id = get_post_thumbnail_id( $post_id );
-			if($thumb_id)
+			if ( $thumb_id )
 				update_post_meta( $new_id, '_thumbnail_id', $thumb_id );
 
 			update_post_meta( $new_id, 'clickthru_url', get_permalink( $post_id ) );
 
-			$response = new WP_Ajax_Response(array(
-				'what'   => 'carousel_item',
+			$response = new WP_Ajax_Response( array(
+				'what' => 'carousel_item',
 				'action' => 'quick_create_carousel_item',
-				'id'     => 1,
-				'data'   => get_edit_post_link($new_id, false)
-			));
+				'id' => 1,
+				'data' => get_edit_post_link( $new_id, false )
+			) );
 			$response->send();
 		}
 	}
 
-	public static function create_carousel_item_metabox( $post ){
+	public static function create_carousel_item_metabox( $post ) {
 		wp_enqueue_script( 'manage-carousel' );
-		$carousel_item_id = get_post_meta($post->ID, 'carousel_item_created', true);
-		if( $carousel_item_id && ( $carousel_item = get_post_status($carousel_item_id) ) ) {
+		$carousel_item_id = get_post_meta( $post->ID, 'carousel_item_created', true );
+		if ( $carousel_item_id && ( $carousel_item = get_post_status( $carousel_item_id ) ) ) {
 			printf( '<p><strong>Carousel Item: </strong><a href="%s">%s</a></p>', get_edit_post_link( $carousel_item_id ), get_the_title( $carousel_item_id ) );
 		} else {
-			printf( '<p><a href="#" id="quick_create_carousel_item" data-nonce="%s">Create Carousel Item from %s</a></p>', wp_create_nonce( 'quick_create_carousel_item' ), get_post_type_object($post->post_type)->labels->singular_name );
+			printf( '<p><a href="#" id="quick_create_carousel_item" data-nonce="%s">Create Carousel Item from %s</a></p>', wp_create_nonce( 'quick_create_carousel_item' ), get_post_type_object( $post->post_type )->labels->singular_name );
 		}
 	}
+
 }
 
 add_action( 'init', array( 'Voce_Carousel', 'init' ) );

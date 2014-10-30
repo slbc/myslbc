@@ -1,30 +1,32 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "2e1aea855dcc0b6dbd786f357b325b15",
+    "hash": "119f5dd2f9d6c4992766edce7439d796",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.12",
+            "version": "v1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "4127333b03e8b4c08d081958548aae5419d1a2fa"
+                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/4127333b03e8b4c08d081958548aae5419d1a2fa",
-                "reference": "4127333b03e8b4c08d081958548aae5419d1a2fa",
+                "url": "https://api.github.com/repos/composer/installers/zipball/74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
+                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
                 "shasum": ""
             },
             "replace": {
+                "roundcube/plugin-installer": "*",
                 "shama/baton": "*"
             },
             "require-dev": {
                 "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "4.1.*"
             },
             "type": "composer-installer",
             "extra": {
@@ -46,21 +48,23 @@
                 {
                     "name": "Kyle Robinson Young",
                     "email": "kyle@dontkry.com",
-                    "homepage": "https://github.com/shama",
-                    "role": "Developer"
+                    "homepage": "https://github.com/shama"
                 }
             ],
             "description": "A multi-framework Composer library installer",
             "homepage": "http://composer.github.com/installers/",
             "keywords": [
                 "Craft",
+                "Dolibarr",
                 "Hurad",
                 "MODX Evo",
                 "OXID",
                 "WolfCMS",
                 "agl",
                 "annotatecms",
+                "bitrix",
                 "cakephp",
+                "chef",
                 "codeigniter",
                 "concrete5",
                 "croogo",
@@ -76,9 +80,12 @@
                 "mako",
                 "mediawiki",
                 "modulework",
+                "moodle",
                 "phpbb",
                 "piwik",
                 "ppi",
+                "puppet",
+                "roundcube",
                 "shopware",
                 "silverstripe",
                 "symfony",
@@ -87,20 +94,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-02-24 04:21:34"
+            "time": "2014-08-18 20:00:12"
         },
         {
             "name": "voceconnect/post-selection-ui",
-            "version": "1.0.7",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voceconnect/post-selection-ui.git",
-                "reference": "9c006ca90a3be3446ffe61dde9bfd811af951f4a"
+                "reference": "862b4e4c250372a19312473a747ed5f50b1b954c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voceconnect/post-selection-ui/zipball/9c006ca90a3be3446ffe61dde9bfd811af951f4a",
-                "reference": "9c006ca90a3be3446ffe61dde9bfd811af951f4a",
+                "url": "https://api.github.com/repos/voceconnect/post-selection-ui/zipball/862b4e4c250372a19312473a747ed5f50b1b954c",
+                "reference": "862b4e4c250372a19312473a747ed5f50b1b954c",
                 "shasum": ""
             },
             "type": "library",
@@ -115,25 +122,25 @@
             ],
             "authors": [
                 {
-                    "name": "Michael Pretty",
+                    "name": "Mike Pretty",
                     "email": "mpretty@voceconnect.com"
                 }
             ],
             "description": "A WordPress library to display a user interface to easily select posts from any post type",
-            "time": "2014-02-06 16:05:17"
+            "time": "2014-07-08 16:33:23"
         },
         {
             "name": "voceconnect/voce-post-meta",
-            "version": "v1.4.2",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voceconnect/voce-post-meta.git",
-                "reference": "ebdb07aeb79017bfee658fc1a7d60127e458a29b"
+                "reference": "8864457569305a586cd30e3a6c9a65582cd50644"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voceconnect/voce-post-meta/zipball/ebdb07aeb79017bfee658fc1a7d60127e458a29b",
-                "reference": "ebdb07aeb79017bfee658fc1a7d60127e458a29b",
+                "url": "https://api.github.com/repos/voceconnect/voce-post-meta/zipball/8864457569305a586cd30e3a6c9a65582cd50644",
+                "reference": "8864457569305a586cd30e3a6c9a65582cd50644",
                 "shasum": ""
             },
             "type": "library",
@@ -147,10 +154,6 @@
                 "GPLv2+"
             ],
             "authors": [
-                {
-                    "name": "Michael Pretty",
-                    "email": "mpretty@voceconnect.com"
-                },
                 {
                     "name": "Kevin Langley Jr",
                     "email": "klangley@voceconnect.com"
@@ -166,6 +169,10 @@
                 {
                     "name": "Gary Smirny",
                     "email": "gary@voceconnect.com"
+                },
+                {
+                    "name": "Michael Pretty",
+                    "email": "mpretty@voceconnect.com"
                 }
             ],
             "description": "Easily create post metaboxes and add fields",
@@ -173,20 +180,20 @@
                 "post meta",
                 "wordpress"
             ],
-            "time": "2014-01-02 20:55:53"
+            "time": "2014-10-01 17:09:44"
         },
         {
             "name": "voceconnect/voce-post-meta-media",
-            "version": "v1.1.1",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voceconnect/voce-post-meta-media.git",
-                "reference": "665c03e5adb113fd6875924eb6e8193d3bedb752"
+                "reference": "16bb40f1ee2e1c6fe59a63ad53acacb43cb4cd49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voceconnect/voce-post-meta-media/zipball/665c03e5adb113fd6875924eb6e8193d3bedb752",
-                "reference": "665c03e5adb113fd6875924eb6e8193d3bedb752",
+                "url": "https://api.github.com/repos/voceconnect/voce-post-meta-media/zipball/16bb40f1ee2e1c6fe59a63ad53acacb43cb4cd49",
+                "reference": "16bb40f1ee2e1c6fe59a63ad53acacb43cb4cd49",
                 "shasum": ""
             },
             "require": {
@@ -221,20 +228,20 @@
                 }
             ],
             "description": "Extension of Voce Post Meta Plugin to create media meta fields",
-            "time": "2014-01-02 20:16:15"
+            "time": "2014-03-11 20:59:46"
         },
         {
             "name": "voceconnect/voce-post-meta-psu",
-            "version": "v1.0.3",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voceconnect/voce-post-meta-psu.git",
-                "reference": "52710444db8ab2b06037dc58038eeedd2b851ab6"
+                "reference": "a370cc6e5fcf9bba184746ade565e7b20103ed63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voceconnect/voce-post-meta-psu/zipball/52710444db8ab2b06037dc58038eeedd2b851ab6",
-                "reference": "52710444db8ab2b06037dc58038eeedd2b851ab6",
+                "url": "https://api.github.com/repos/voceconnect/voce-post-meta-psu/zipball/a370cc6e5fcf9bba184746ade565e7b20103ed63",
+                "reference": "a370cc6e5fcf9bba184746ade565e7b20103ed63",
                 "shasum": ""
             },
             "require": {
@@ -262,20 +269,20 @@
                 "post meta",
                 "wordpress"
             ],
-            "time": "2014-01-03 18:01:58"
+            "time": "2014-06-03 18:16:30"
         },
         {
             "name": "voceconnect/voce-settings-api",
-            "version": "0.4.3",
+            "version": "0.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voceconnect/voce-settings-api.git",
-                "reference": "ea6c8a53759b1a90edb442b8b5f9b73083909428"
+                "reference": "9e9ef75e558a8b296aca32175298eca2da94d62d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voceconnect/voce-settings-api/zipball/ea6c8a53759b1a90edb442b8b5f9b73083909428",
-                "reference": "ea6c8a53759b1a90edb442b8b5f9b73083909428",
+                "url": "https://api.github.com/repos/voceconnect/voce-settings-api/zipball/9e9ef75e558a8b296aca32175298eca2da94d62d",
+                "reference": "9e9ef75e558a8b296aca32175298eca2da94d62d",
                 "shasum": ""
             },
             "type": "library",
@@ -295,19 +302,19 @@
                 }
             ],
             "description": "A simplification of the core WordPress settings API",
-            "time": "2014-02-25 15:10:19"
+            "time": "2014-08-05 21:43:57"
         },
         {
             "name": "voceconnect/wordpress",
-            "version": "3.8.1",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress",
-                "reference": "3.8.1"
+                "reference": "4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://wordpress.org/wordpress-3.8.1.zip",
+                "url": "http://wordpress.org/wordpress-4.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -337,16 +344,16 @@
             "homepage": "http://wordpress.org/extend/plugins/crop-thumbnails"
         },
         {
-            "name": "wpackagist/memcached",
-            "version": "2.0.2",
+            "name": "wpackagist/memcached-redux",
+            "version": "0.1.2",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/memcached/",
-                "reference": "tags/2.0.2"
+                "url": "http://plugins.svn.wordpress.org/memcached-redux/",
+                "reference": "tags/0.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/memcached.2.0.2.zip",
+                "url": "http://downloads.wordpress.org/plugin/memcached-redux.0.1.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -354,19 +361,19 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/extend/plugins/memcached"
+            "homepage": "http://wordpress.org/plugins/memcached-redux/"
         },
         {
             "name": "wpackagist/voce-seo",
-            "version": "0.2.3",
+            "version": "0.3.9",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/voce-seo/",
-                "reference": "tags/0.2.3"
+                "reference": "tags/0.3.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/voce-seo.0.2.3.zip",
+                "url": "http://downloads.wordpress.org/plugin/voce-seo.0.3.9.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -374,7 +381,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/extend/plugins/voce-seo"
+            "homepage": "http://wordpress.org/plugins/voce-seo/"
         }
     ],
     "packages-dev": [
@@ -505,9 +512,7 @@
             "time": "2013-09-24 15:23:25"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "wpackagist/debug-bar": 20,
@@ -517,10 +522,7 @@
         "wpackagist/rewrite-rules-inspector": 20,
         "wpackagist/log-deprecated-notices": 20
     },
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
 }

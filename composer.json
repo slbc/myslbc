@@ -17,7 +17,7 @@
         "vendor-dir": "wp-content/mu-plugins"
     },
     "require": {
-        "voceconnect/wordpress": "~3.8.0",
+        "voceconnect/wordpress": "~4.0.0",
         "voceconnect/voce-settings-api": "~0.4",
         "voceconnect/post-selection-ui": "~1.0",
         "voceconnect/voce-post-meta": "~1.4",
@@ -25,7 +25,7 @@
         "voceconnect/voce-post-meta-psu": "~1.0",
         "wpackagist/crop-thumbnails": "~0.8",
         "wpackagist/voce-seo": "~0.2",
-        "wpackagist/memcached": "2.0.2"
+        "wpackagist/memcached-redux": "0.1.2"
     },
     "require-dev": {
         "wpackagist/debug-bar": "9999999-dev",
@@ -41,7 +41,7 @@
                 "voceconnect/wordpress"
             ],
             "wp-content/drop-ins/{$name}/": [
-                "wpackagist/memcached"
+                "wpackagist/memcached-redux"
             ]
         }
     }

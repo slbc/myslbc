@@ -1,1 +1,1 @@
-drop-ins/memcached/object-cache.php
+drop-ins/memcached-redux/object-cache.php

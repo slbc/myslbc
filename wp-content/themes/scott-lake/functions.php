@@ -64,6 +64,8 @@ if ( !function_exists( 'scott_lake_setup' ) ) :
 		add_action( 'wp_enqueue_scripts', 'scott_lake_scripts' );
 
 		require_once __DIR__ . '/plugins/voce-carousel/voce-carousel.php';
+		
+		require_once __DIR__ . '/inc/data-types/post-types/post-types.php';
 	}
 
 endif; // scott_lake_setup
